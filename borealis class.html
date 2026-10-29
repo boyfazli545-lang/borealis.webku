@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borealis Class</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Bagian Pertama: Tema Burgundy */
+        .hero-section {
+            background-color: #800020; /* Warna Burgundy */
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Tombol Berwarna Biru */
+        .btn-blue {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+            z-index: 10;
+        }
+
+        .btn-blue:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+        }
+
+        /* Bagian Kedua: Perpaduan Burgundy dan Biru Muda */
+        .columns-section {
+            display: none; /* Awalnya disembunyikan */
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #800020 0%, #4a0013 50%, #1d4ed8 100%);
+            color: white;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Grid untuk 28 Kolom */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .column-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(173, 216, 230, 0.4);
+            padding: 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-transform: capitalize;
+            transition: all 0.3s ease;
+        }
+
+        .column-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            background: rgba(173, 216, 230, 0.2);
+            border-color: #ADD8E6;
+            box-shadow: 0 12px 40px rgba(173, 216, 230, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bagian Pertama -->
+    <section class="hero-section">
+        <h1 class="hero-title">✨ Welcome to Borealis Class ✨</h1>
+        <!-- Tombol menggunakan event listener di bagian script agar lebih stabil -->
+        <button id="actionBtn" class="btn-blue">🚀 Lihat Daftar Anggota</button>
+    </section>
+
+    <!-- Bagian Kedua (Kolom) -->
+    <section id="columnsSection" class="columns-section">
+        <h2 class="section-title">🌟 7BOREALISS CLASSS 🌟</h2>
+        <div class="grid-container" id="gridContainer">
+            <!-- Kolom akan dimasukkan secara otomatis oleh JavaScript -->
+        </div>
+    </section>
+
+    <script>
+        // Daftar 28 nama sesuai permintaan Anda
+        const names28 = [
+            "abdul", "aisha", "arshaka", "fairuz", 
+            "daud", "hasby", "aji", "kanaya", 
+            "khanza", "arfan", "alghi", "fabian", 
+            "akmal", "danish", "althaf", "salsa", 
+            "sayra", "haura", "tasmansa", "cinta", 
+            "alisya", "hanna", "aqilla", "fakhri", 
+            "wanda", "azka", "alfi", "zhafira"
+        ];
+
+        // Menghubungkan tombol menggunakan JavaScript secara aman
+        document.getElementById('actionBtn').addEventListener('click', function() {
+            const section = document.getElementById('columnsSection');
+            const container = document.getElementById('gridContainer');
+            
+            // Kosongkan container terlebih dahulu
+            container.innerHTML = "";
+
+            // Masukkan 28 data nama
+            names28.forEach((name, index) => {
+                const div = document.createElement('div');
+                div.className = 'column-item';
+                div.innerHTML = `👤 ${index + 1}. ${name}`;
+                container.appendChild(div);
+            });
+
+            // Ubah display section menjadi block agar muncul
+            section.style.display = 'block';
+            
+            // Berikan efek bergulir (scroll) secara halus ke bagian bawah
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
